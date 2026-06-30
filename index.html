@@ -311,6 +311,42 @@ a{color:inherit;text-decoration:none}
   text-transform:uppercase;padding:.8rem 1.6rem;border:none;cursor:pointer;font-weight:700;
 }
 
+/* ── RESEARCH NOTES ── */
+.research-section{padding:2.5rem 1.75rem;border-bottom:.5px solid var(--rule)}
+.research-label{font-family:var(--font-mono);font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream3);margin-bottom:.6rem}
+.research-title{font-family:var(--font-display);font-size:1.6rem;font-weight:300;color:var(--white);margin-bottom:.6rem}
+.research-title em{font-style:italic;color:var(--cream2)}
+.research-sub{font-size:.85rem;color:rgba(255,255,255,.45);font-weight:300;line-height:1.8;margin-bottom:1.75rem;max-width:520px}
+.research-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--rule);margin-bottom:1.75rem}
+.research-card{background:var(--ink2);padding:1.5rem;cursor:pointer;transition:background .2s}
+.research-card:hover{background:rgba(255,255,255,.05)}
+.research-meta{font-family:var(--font-mono);font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);margin-bottom:.55rem}
+.research-headline{font-family:var(--font-display);font-size:.98rem;color:var(--white);margin-bottom:.55rem;line-height:1.4;font-weight:500}
+.research-excerpt{font-size:.78rem;color:var(--cream2);line-height:1.7;font-weight:300;margin-bottom:.6rem}
+.research-link{font-family:var(--font-mono);font-size:.44rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.research-readall{
+  display:inline-block;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;
+  background:transparent;color:var(--white);border:.5px solid var(--rule);padding:.75rem 1.5rem;cursor:pointer;transition:all .2s;
+}
+.research-readall:hover{border-color:rgba(255,255,255,.4)}
+
+/* ── PORTAL MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;padding:2rem;overflow-y:auto}
+.modal-box{background:var(--ink2);border:.5px solid var(--rule);max-width:520px;width:100%;padding:3rem 2.5rem;position:relative;margin:auto}
+.modal-close{position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;color:rgba(255,255,255,.4);font-size:1.2rem;cursor:pointer;font-family:var(--font-mono)}
+.modal-label{font-family:var(--font-mono);font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:#C8893A;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.modal-dot{width:6px;height:6px;border-radius:50%;background:#C8893A;display:inline-block;animation:pulse 2s infinite}
+.modal-title{font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--white);margin-bottom:1rem;line-height:1.2}
+.modal-text{font-size:.9rem;color:rgba(255,255,255,.45);font-weight:300;line-height:1.9;margin-bottom:2rem}
+.modal-features{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);margin-bottom:2rem}
+.modal-feature{background:var(--ink2);padding:1rem 1.25rem}
+.modal-feature-label{font-family:var(--font-mono);font-size:.44rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.3rem}
+.modal-feature-val{font-family:var(--font-mono);font-size:.52rem;color:rgba(255,255,255,.5)}
+.modal-cta{
+  display:block;text-align:center;font-family:var(--font-mono);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;
+  background:rgba(255,255,255,0.08);color:var(--white);border:.5px solid rgba(255,255,255,0.2);padding:1rem;text-decoration:none;
+}
+
 footer{
   background:var(--ink2);color:var(--cream3);padding:2.5rem 1.5rem;text-align:center;
   font-family:var(--font-mono);font-size:.56rem;letter-spacing:.06em;border-top:.5px solid var(--rule);
@@ -332,7 +368,11 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
 <header class="masthead">
   <div class="masthead-top">
     <span><span class="live-dot"></span>LIVE FEED — AUTO-REFRESH EVERY 5 MIN</span>
-    <a href="https://ascendaenterprisecapital.com" target="_blank" rel="noopener">ASCENDAENTERPRISECAPITAL.COM →</a>
+    <span style="display:flex;gap:1.5rem;align-items:center">
+      <a href="#" onclick="document.getElementById('research-modal').style.display='flex';return false;">RESEARCH NOTES</a>
+      <a href="#" onclick="document.getElementById('portal-modal').style.display='flex';return false;">INVESTOR PORTAL</a>
+      <a href="https://ascendaenterprisecapital.com" target="_blank" rel="noopener">ASCENDAENTERPRISECAPITAL.COM →</a>
+    </span>
   </div>
   <div class="masthead-main">
     <div class="brand-block">
@@ -355,6 +395,33 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
 <div class="container">
   <div class="layout">
     <main class="feed-col">
+      <div class="research-section">
+        <div class="research-label">AEC Market Intelligence</div>
+        <div class="research-title">Research <em>Notes</em></div>
+        <div class="research-sub">Weekly market analysis, macro commentary, and trade insights from Izaiah Cottle and the AEC trading desk — free to read, no subscription required.</div>
+        <div class="research-grid">
+          <div class="research-card" onclick="document.getElementById('research-modal').style.display='flex';document.getElementById('research-article-0').scrollIntoView()">
+            <div class="research-meta">Jun 14, 2026 · Futures</div>
+            <div class="research-headline">NQ at Critical Confluence — What the June 14 Open Tells Us</div>
+            <div class="research-excerpt">The NASDAQ 100 futures opened directly into a weekly Fair Value Gap. With CPI printing hotter than expected, the market is pricing in higher-for-longer…</div>
+            <div class="research-link">Read Full Note →</div>
+          </div>
+          <div class="research-card" onclick="document.getElementById('research-modal').style.display='flex';document.getElementById('research-article-1').scrollIntoView()">
+            <div class="research-meta">Jun 7, 2026 · Macro</div>
+            <div class="research-headline">The Dollar, Gold, and Why Institutions Are Quietly Rotating</div>
+            <div class="research-excerpt">The USD Index has weakened three consecutive weeks while Gold holds above $2,300. This is not coincidence — here is what it means…</div>
+            <div class="research-link">Read Full Note →</div>
+          </div>
+          <div class="research-card" onclick="document.getElementById('research-modal').style.display='flex';document.getElementById('research-article-2').scrollIntoView()">
+            <div class="research-meta">May 31, 2026 · Real Estate</div>
+            <div class="research-headline">Atlanta Real Estate: Why We Are Still Buyers in a High Rate Environment</div>
+            <div class="research-excerpt">Conventional wisdom says avoid real estate above 7% rates. AEC respectfully disagrees — here is the Atlanta submarket thesis…</div>
+            <div class="research-link">Read Full Note →</div>
+          </div>
+        </div>
+        <button class="research-readall" onclick="document.getElementById('research-modal').style.display='flex'">Read All Research Notes →</button>
+      </div>
+
       <div class="calendar-section" id="calendarSection">
         <div class="cal-header">
           <div class="cal-title">Economic <b>Calendar</b> — Red Folder Events</div>
@@ -393,7 +460,8 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
       <div class="aec-cta">
         <div class="aec-cta-title">Ascenda Enterprise Capital</div>
         <div class="aec-cta-sub">Multi-strategy investment firm — global markets, real estate, private equity. Currently accepting accredited investors.</div>
-        <a class="aec-cta-btn" href="https://ascendaenterprisecapital.com" target="_blank" rel="noopener">View Firm →</a>
+        <a class="aec-cta-btn" href="#" onclick="document.getElementById('portal-modal').style.display='flex';return false;">Investor Portal →</a>
+        <div style="margin-top:.6rem"><a href="https://ascendaenterprisecapital.com" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);text-decoration:underline">View Full Firm Site →</a></div>
       </div>
 
       <div class="side-block about-block">
@@ -537,21 +605,46 @@ function renderSourceList(){
 }
 
 async function fetchSourceFeed(source){
+  // Try primary proxy first
   try{
     const proxyUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(source.rss) + '&count=12';
     const res = await fetch(proxyUrl);
     const data = await res.json();
-    if(data.status !== 'ok' || !data.items || data.items.length === 0){
-      sourceStatus[source.id] = 'error';
-      return [];
+    if(data.status === 'ok' && data.items && data.items.length > 0){
+      sourceStatus[source.id] = 'ok';
+      return data.items.map(item => ({
+        source: source.id, sourceName: source.name, sourceCls: source.cls,
+        title: stripHtml(item.title), summary: stripHtml(item.description || '').slice(0, 180),
+        link: item.link, pubDate: item.pubDate ? new Date(item.pubDate) : new Date(),
+      }));
     }
+  }catch(e){ /* fall through to backup proxy */ }
+
+  // Backup proxy via allorigins
+  try{
+    const backupUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(source.rss);
+    const res2 = await fetch(backupUrl);
+    const xmlText = await res2.text();
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmlText, 'text/xml');
+    const items = Array.from(xml.querySelectorAll('item')).slice(0, 12);
+    if(items.length === 0) throw new Error('no items');
     sourceStatus[source.id] = 'ok';
-    return data.items.map(item => ({
-      source: source.id, sourceName: source.name, sourceCls: source.cls,
-      title: stripHtml(item.title), summary: stripHtml(item.description || '').slice(0, 180),
-      link: item.link, pubDate: item.pubDate ? new Date(item.pubDate) : new Date(),
-    }));
-  }catch(e){ sourceStatus[source.id] = 'error'; return []; }
+    return items.map(item => {
+      const title = item.querySelector('title')?.textContent || '';
+      const desc = item.querySelector('description')?.textContent || '';
+      const link = item.querySelector('link')?.textContent || '';
+      const pubDateStr = item.querySelector('pubDate')?.textContent;
+      return {
+        source: source.id, sourceName: source.name, sourceCls: source.cls,
+        title: stripHtml(title), summary: stripHtml(desc).slice(0, 180),
+        link: link, pubDate: pubDateStr ? new Date(pubDateStr) : new Date(),
+      };
+    });
+  }catch(e){
+    sourceStatus[source.id] = 'error';
+    return [];
+  }
 }
 
 function stripHtml(str){
@@ -701,5 +794,79 @@ if(savedKey){
   loadCalendar(savedKey);
 }
 </script>
+<!-- RESEARCH NOTES MODAL -->
+<div id="research-modal" class="modal-overlay" onclick="if(event.target===this)this.style.display='none'">
+  <div style="max-width:800px;margin:auto;position:relative;width:100%">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;position:sticky;top:0;background:rgba(10,9,13,0.97);padding:1rem 0;border-bottom:.5px solid var(--rule)">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:#888;margin-bottom:.3rem">AEC Market Intelligence</div>
+        <div style="font-family:var(--font-display);font-size:1.4rem;color:#fff;font-weight:300">Research Notes</div>
+      </div>
+      <button onclick="document.getElementById('research-modal').style.display='none'" style="background:none;border:.5px solid rgba(255,255,255,0.2);color:rgba(255,255,255,.5);font-size:.9rem;cursor:pointer;padding:.5rem 1rem;font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em">✕ CLOSE</button>
+    </div>
+
+    <div id="research-article-0" style="margin-bottom:3rem;padding-bottom:3rem;border-bottom:.5px solid var(--rule)">
+      <div style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.75rem">Jun 14, 2026 · Futures · By Izaiah Cottle</div>
+      <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:#fff;line-height:1.2;margin-bottom:1.25rem">NQ at Critical Confluence — What the June 14 Open Tells Us</h3>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem">The NASDAQ 100 futures opened directly into a weekly Fair Value Gap on June 14. With CPI printing hotter than expected, the market is pricing in higher-for-longer — and the institutional reaction was immediate.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem">What caught AEC's attention was not the CPI print itself — it was the order flow response. In the first 15 minutes of the New York open, NQ absorbed significant sell-side liquidity at the 18,840 level without breaking. That absorption pattern, confirmed by our DOM layer, signaled institutional accumulation rather than distribution.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem">Our Z-Score framework showed price at 2.1 standard deviations below the 20-period mean on the 15-minute chart — historically a high-probability mean reversion zone. Combined with the FVG confluence and order flow confirmation, the setup aligned across all three layers of AEC's system.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem"><strong style="color:rgba(255,255,255,.7)">Key levels to watch:</strong> 18,840 remains critical support. A sustained close above 19,200 opens the door to the next liquidity pool at 19,580. Failure to hold 18,840 targets the daily FVG at 18,420.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9"><strong style="color:rgba(255,255,255,.7)">AEC positioning:</strong> We remain tactically long on confirmed momentum above 18,900, with defined risk below 18,780. Position sizing per Kelly Criterion — no overexposure regardless of conviction level.</p>
+      <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(255,255,255,0.04);border-left:2px solid rgba(255,255,255,0.2)">
+        <p style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.08em;color:rgba(255,255,255,.25);margin:0">This note is for informational purposes only and does not constitute investment advice. Past performance is not indicative of future results.</p>
+      </div>
+    </div>
+
+    <div id="research-article-1" style="margin-bottom:3rem;padding-bottom:3rem;border-bottom:.5px solid var(--rule)">
+      <div style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.75rem">Jun 7, 2026 · Macro · By Izaiah Cottle</div>
+      <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:#fff;line-height:1.2;margin-bottom:1.25rem">The Dollar, Gold, and Why Institutions Are Quietly Rotating</h3>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem">The USD Index has weakened three consecutive weeks while Gold holds above $2,300. This is not coincidence — this is a deliberate institutional rotation that most retail participants are missing entirely.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem">The inverse relationship between the dollar and gold is well understood. What is less understood is the timing of these rotations at the institutional level. When large capital moves from dollar-denominated assets into hard assets like gold, it does so gradually — over weeks, not days. The weekly chart tells this story clearly.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem">AEC's order flow analysis on Gold futures shows consistent absorption at the $2,280-$2,300 range over the past three weeks. Every dip into that zone has been met with institutional buying — the kind of patient, systematic accumulation that precedes significant directional moves.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem"><strong style="color:rgba(255,255,255,.7)">The macro thesis:</strong> If the Fed delays rate cuts further into 2026, dollar strength becomes a ceiling rather than a floor. Simultaneously, geopolitical uncertainty and sovereign debt concerns globally continue to support the gold bid. AEC sees this as a multi-month structural tailwind for precious metals.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9"><strong style="color:rgba(255,255,255,.7)">AEC positioning:</strong> Long Gold on pullbacks to the $2,280 zone with targets at $2,420 and $2,500. Stop below $2,240 on a weekly close basis.</p>
+      <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(255,255,255,0.04);border-left:2px solid rgba(255,255,255,0.2)">
+        <p style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.08em;color:rgba(255,255,255,.25);margin:0">This note is for informational purposes only and does not constitute investment advice. Past performance is not indicative of future results.</p>
+      </div>
+    </div>
+
+    <div id="research-article-2" style="margin-bottom:2rem">
+      <div style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.75rem">May 31, 2026 · Real Estate · By Izaiah Cottle</div>
+      <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:#fff;line-height:1.2;margin-bottom:1.25rem">Atlanta Real Estate: Why We Are Still Buyers in a High Rate Environment</h3>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem">Conventional wisdom says avoid real estate above 7% rates. AEC respectfully disagrees — and here is the Atlanta submarket thesis that justifies our continued acquisition posture.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem">Atlanta is not a typical market. The city's population has grown faster than any major U.S. metro over the past five years. Job creation in the technology, film, logistics, and financial services sectors continues to outpace housing supply by a significant margin. The fundamentals that drive real estate appreciation — population growth, job creation, housing undersupply — remain firmly intact regardless of the rate environment.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem">AEC's real estate strategy is not rate-dependent. We focus on value-add acquisitions where the forced appreciation through renovation and repositioning creates equity that rate environment alone cannot erode. A property acquired at the right basis with the right execution thesis generates returns independent of the financing rate.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem"><strong style="color:rgba(255,255,255,.7)">Target submarkets:</strong> Southwest Atlanta, College Park, East Point, and select DeKalb County corridors showing above-average rent growth and below-average days on market. These pockets remain underpriced relative to their trajectory.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9"><strong style="color:rgba(255,255,255,.7)">AEC thesis:</strong> Rate normalization — whenever it comes — will be a significant catalyst for appreciation in already supply-constrained markets like Atlanta. We are positioning now to benefit from that inflection point. Those who wait for rates to drop will be competing for the same assets at higher prices.</p>
+      <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:rgba(255,255,255,0.04);border-left:2px solid rgba(255,255,255,0.2)">
+        <p style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.08em;color:rgba(255,255,255,.25);margin:0">This note is for informational purposes only and does not constitute investment advice. Past performance is not indicative of future results.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:1.5rem 0;border-top:.5px solid var(--rule)">
+      <p style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2)">New research notes published weekly · Visit <a href="https://ascendaenterprisecapital.com#newsletter" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline">ascendaenterprisecapital.com</a> to subscribe</p>
+    </div>
+  </div>
+</div>
+
+<!-- INVESTOR PORTAL MODAL -->
+<div id="portal-modal" class="modal-overlay" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal-box">
+    <button class="modal-close" onclick="document.getElementById('portal-modal').style.display='none'">✕</button>
+    <div class="modal-label"><span class="modal-dot"></span>Investor Portal — In Development</div>
+    <div class="modal-title">Private Investor Portal</div>
+    <div class="modal-text">The AEC Investor Portal is currently in active development. Confirmed investors will receive direct login credentials upon onboarding. Real-time P&amp;L, quarterly reports, and fund communications — all in one secure dashboard.</div>
+    <div class="modal-features">
+      <div class="modal-feature"><div class="modal-feature-label">Feature</div><div class="modal-feature-val">Real-Time P&amp;L</div></div>
+      <div class="modal-feature"><div class="modal-feature-label">Feature</div><div class="modal-feature-val">Quarterly Reports</div></div>
+      <div class="modal-feature"><div class="modal-feature-label">Feature</div><div class="modal-feature-val">Fund Communications</div></div>
+      <div class="modal-feature"><div class="modal-feature-label">Feature</div><div class="modal-feature-val">Document Vault</div></div>
+    </div>
+    <p style="font-size:.8rem;color:rgba(255,255,255,.3);font-family:var(--font-mono);letter-spacing:.06em;margin-bottom:1.5rem">Already an investor? Contact us directly for access.</p>
+    <a class="modal-cta" href="mailto:izaiah@ascendaenterprisecapital.com">Contact for Portal Access →</a>
+  </div>
+</div>
+
 </body>
 </html>
