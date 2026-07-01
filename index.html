@@ -98,7 +98,10 @@ a{color:inherit;text-decoration:none}
 .article{padding:1.75rem;border-bottom:.5px solid var(--rule);display:grid;grid-template-columns:auto 1fr;gap:1.5rem;cursor:pointer;transition:background .15s;text-decoration:none;color:inherit}
 .article:hover{background:rgba(255,255,255,.02)}
 .article-num{font-family:var(--font-mono);font-size:.6rem;color:rgba(255,255,255,.2);font-weight:700;padding-top:.25rem}
-.article-source{display:inline-block;font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;margin-bottom:.7rem;font-weight:700;border:.5px solid currentColor}
+.news-impact-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:.6rem;vertical-align:middle;flex-shrink:0}
+.news-impact-high{background:#B23A2E;box-shadow:0 0 6px rgba(178,58,46,.6)}
+.news-impact-medium{background:#C8893A;box-shadow:0 0 6px rgba(200,137,58,.5)}
+.article-source{display:inline-flex;align-items:center;font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .55rem;margin-bottom:.7rem;font-weight:700;border:.5px solid currentColor}
 .src-bloomberg{color:#FF8A5C}.src-wsj{color:#FFFFFF;border-color:rgba(255,255,255,.4)}.src-cnbc{color:#5CADFF}.src-ap{color:#FF6B5C}.src-marketwatch{color:#3FE6A0}.src-ft{color:#FF99B8}.src-reuters{color:#FFB95C}.src-yahoo{color:#B98AFF}.src-investing{color:#5CC9FF}.src-finviz{color:#D4AF6A}
 .src-nasdaq{color:#5CADFF}
 .src-forbes{color:#D4AF6A}
@@ -225,6 +228,28 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
             <span><span class="impact-dot impact-low"></span>Low</span>
           </div>
         </div>
+        <div style="padding:.7rem 1.75rem;font-family:var(--font-mono);font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cream3);border-bottom:.5px solid var(--rule-light);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem">
+          <span>All times displayed in <b style="color:var(--white)">Eastern Time (ET · New York)</b></span>
+          <span style="color:rgba(255,255,255,.3)">Click the clock icon inside the calendar to confirm timezone lock</span>
+        </div>
+
+        <!-- KEY MACRO EVENTS REFERENCE -->
+        <div style="padding:1.75rem;border-bottom:.5px solid var(--rule)">
+          <div style="font-family:var(--font-mono);font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream3);margin-bottom:1rem">Key Macro Releases — Next Dates (ET)</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule)" id="macroGrid">
+            <div style="background:var(--ink2);padding:1rem 1.1rem"><div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span class="impact-dot impact-high"></span><span style="font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff">CPI</span></div><div style="font-size:.72rem;color:var(--cream2);line-height:1.5;margin-bottom:.5rem">Consumer Price Index — headline U.S. inflation gauge.</div><div class="macro-next" id="next-cpi" style="font-family:var(--font-mono);font-size:.58rem;color:#fff;font-weight:700"></div></div>
+            <div style="background:var(--ink2);padding:1rem 1.1rem"><div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span class="impact-dot impact-high"></span><span style="font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff">PPI</span></div><div style="font-size:.72rem;color:var(--cream2);line-height:1.5;margin-bottom:.5rem">Producer Price Index — wholesale inflation, leading indicator for CPI.</div><div class="macro-next" id="next-ppi" style="font-family:var(--font-mono);font-size:.58rem;color:#fff;font-weight:700"></div></div>
+            <div style="background:var(--ink2);padding:1rem 1.1rem"><div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span class="impact-dot impact-high"></span><span style="font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff">NFP</span></div><div style="font-size:.72rem;color:var(--cream2);line-height:1.5;margin-bottom:.5rem">Non-Farm Payrolls — monthly jobs report (Employment Situation).</div><div class="macro-next" id="next-nfp" style="font-family:var(--font-mono);font-size:.58rem;color:#fff;font-weight:700"></div></div>
+            <div style="background:var(--ink2);padding:1rem 1.1rem"><div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span class="impact-dot impact-high"></span><span style="font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff">FOMC</span></div><div style="font-size:.72rem;color:var(--cream2);line-height:1.5;margin-bottom:.5rem">Federal Reserve rate decision + press conference.</div><div class="macro-next" id="next-fomc" style="font-family:var(--font-mono);font-size:.58rem;color:#fff;font-weight:700"></div></div>
+            <div style="background:var(--ink2);padding:1rem 1.1rem"><div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span class="impact-dot impact-high"></span><span style="font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff">Core PCE</span></div><div style="font-size:.72rem;color:var(--cream2);line-height:1.5;margin-bottom:.5rem">Fed's preferred inflation gauge — part of Personal Income &amp; Outlays.</div><div class="macro-next" id="next-pce" style="font-family:var(--font-mono);font-size:.58rem;color:rgba(255,255,255,.4)"></div></div>
+            <div style="background:var(--ink2);padding:1rem 1.1rem"><div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span class="impact-dot impact-high"></span><span style="font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff">GDP</span></div><div style="font-size:.72rem;color:var(--cream2);line-height:1.5;margin-bottom:.5rem">Gross Domestic Product — quarterly growth, advance/second/third prints.</div><div class="macro-next" id="next-gdp" style="font-family:var(--font-mono);font-size:.58rem;color:rgba(255,255,255,.4)"></div></div>
+            <div style="background:var(--ink2);padding:1rem 1.1rem"><div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span class="impact-dot impact-medium"></span><span style="font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff">Retail Sales</span></div><div style="font-size:.72rem;color:var(--cream2);line-height:1.5;margin-bottom:.5rem">Consumer spending gauge, released mid-month.</div><div class="macro-next" id="next-retail" style="font-family:var(--font-mono);font-size:.58rem;color:rgba(255,255,255,.4)"></div></div>
+            <div style="background:var(--ink2);padding:1rem 1.1rem"><div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span class="impact-dot impact-medium"></span><span style="font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff">Jobless Claims</span></div><div style="font-size:.72rem;color:var(--cream2);line-height:1.5;margin-bottom:.5rem">Weekly unemployment filings, every Thursday.</div><div class="macro-next" id="next-claims" style="font-family:var(--font-mono);font-size:.58rem;color:#fff;font-weight:700"></div></div>
+            <div style="background:var(--ink2);padding:1rem 1.1rem"><div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span class="impact-dot impact-medium"></span><span style="font-family:var(--font-mono);font-size:.6rem;font-weight:700;color:#fff">ISM PMI</span></div><div style="font-size:.72rem;color:var(--cream2);line-height:1.5;margin-bottom:.5rem">Manufacturing / Services activity index, first business days of month.</div><div class="macro-next" id="next-pmi" style="font-family:var(--font-mono);font-size:.58rem;color:#fff;font-weight:700"></div></div>
+          </div>
+          <div style="font-family:var(--font-mono);font-size:.44rem;letter-spacing:.06em;color:rgba(255,255,255,.25);margin-top:1rem">CPI, PPI, NFP dates sourced from BLS's published release schedule. FOMC dates from the Federal Reserve. GDP/Core PCE/Retail Sales dates vary by release — confirm exact date in the live calendar below.</div>
+        </div>
+
         <div id="calendarBody">
           <div style="width:100%;overflow:hidden">
             <iframe src="https://sslecal2.investing.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&importance=3,2&features=datepicker,timezone&countries=25,32,6,37,72,22,17,39,14,10,35,43,56,36,110,11,26,12,4,5&calType=week&timeZone=8&lang=1"
@@ -242,6 +267,10 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 4v6h6M20 20v-6h-6M4 10a8 8 0 0114-5M20 14a8 8 0 01-14 5"/></svg>
           Refresh
         </button>
+      </div>
+      <div style="padding:.7rem 1.75rem;font-family:var(--font-mono);font-size:.5rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cream3);border-bottom:.5px solid var(--rule-light);display:flex;gap:1.25rem;flex-wrap:wrap">
+        <span><span class="news-impact-dot news-impact-high" style="margin-right:.4rem"></span>Headline flags a high-impact macro theme (CPI, Fed, jobs, rates)</span>
+        <span><span class="news-impact-dot news-impact-medium" style="margin-right:.4rem"></span>Medium-impact theme (earnings, PMI, guidance)</span>
       </div>
       <div id="feedContainer"></div>
     </main>
@@ -368,9 +397,90 @@ var activeFilter = 'all';
 var allArticles = [];
 var sourceStatus = {};
 
+var ET_ZONE = 'America/New_York';
+
+// Confirmed official release dates (BLS / Federal Reserve published schedules)
+var CPI_DATES  = ['2026-07-14','2026-08-12','2026-09-11','2026-10-14','2026-11-10','2026-12-10'];
+var PPI_DATES  = ['2026-07-15','2026-08-13','2026-09-10','2026-10-15','2026-11-13','2026-12-15'];
+var NFP_DATES  = ['2026-07-02','2026-08-07','2026-09-04','2026-10-02','2026-11-06','2026-12-04'];
+var FOMC_DATES = ['2026-07-29','2026-09-16','2026-10-28','2026-12-09'];
+
+function todayET() {
+  var s = new Date().toLocaleDateString('en-CA', { timeZone: ET_ZONE }); // YYYY-MM-DD
+  return s;
+}
+
+function nextFromList(dates) {
+  var today = todayET();
+  for (var i=0; i<dates.length; i++) {
+    if (dates[i] >= today) return dates[i];
+  }
+  return null;
+}
+
+function formatMacroDate(iso) {
+  if (!iso) return 'Date TBD — see live calendar';
+  var d = new Date(iso + 'T12:00:00Z');
+  return 'Next: ' + d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric', timeZone: ET_ZONE }) + ' · 8:30 AM ET';
+}
+
+function nextThursday() {
+  var now = new Date();
+  var etStr = now.toLocaleString('en-US', { timeZone: ET_ZONE });
+  var etNow = new Date(etStr);
+  var day = etNow.getDay(); // 0=Sun..4=Thu..6=Sat
+  var diff = (4 - day + 7) % 7;
+  if (diff === 0 && etNow.getHours() >= 9) diff = 7; // if past release time today, roll to next week
+  var next = new Date(etNow);
+  next.setDate(etNow.getDate() + diff);
+  return 'Next: ' + next.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) + ' · 8:30 AM ET';
+}
+
+function nextFirstBusinessDay() {
+  var now = new Date();
+  var etStr = now.toLocaleString('en-US', { timeZone: ET_ZONE });
+  var etNow = new Date(etStr);
+  function firstBizDay(year, month) {
+    var d = new Date(year, month, 1);
+    while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+    return d;
+  }
+  var candidate = firstBizDay(etNow.getFullYear(), etNow.getMonth());
+  if (candidate < etNow) candidate = firstBizDay(etNow.getFullYear(), etNow.getMonth() + 1);
+  return 'Next: ' + candidate.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) + ' · 10:00 AM ET';
+}
+
+function renderMacroDates() {
+  var cpiEl = document.getElementById('next-cpi');
+  var ppiEl = document.getElementById('next-ppi');
+  var nfpEl = document.getElementById('next-nfp');
+  var fomcEl = document.getElementById('next-fomc');
+  var claimsEl = document.getElementById('next-claims');
+  var pmiEl = document.getElementById('next-pmi');
+  var pceEl = document.getElementById('next-pce');
+  var gdpEl = document.getElementById('next-gdp');
+  var retailEl = document.getElementById('next-retail');
+  if (cpiEl) cpiEl.textContent = formatMacroDate(nextFromList(CPI_DATES));
+  if (ppiEl) ppiEl.textContent = formatMacroDate(nextFromList(PPI_DATES));
+  if (nfpEl) nfpEl.textContent = formatMacroDate(nextFromList(NFP_DATES));
+  if (fomcEl) {
+    var fomcDate = nextFromList(FOMC_DATES);
+    fomcEl.textContent = fomcDate ? ('Next: ' + new Date(fomcDate + 'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric', timeZone: ET_ZONE}) + ' · 2:00 PM ET') : 'Date TBD — see live calendar';
+  }
+  if (claimsEl) claimsEl.textContent = nextThursday();
+  if (pmiEl) pmiEl.textContent = nextFirstBusinessDay();
+  if (pceEl) pceEl.textContent = 'See live calendar below';
+  if (gdpEl) gdpEl.textContent = 'See live calendar below';
+  if (retailEl) retailEl.textContent = 'See live calendar below';
+}
+renderMacroDates();
+
 function updateDate() {
   var now = new Date();
-  document.getElementById('dateblock').innerHTML = '<b>' + now.toLocaleDateString('en-US',{weekday:'long'}).toUpperCase() + '</b> ' + now.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  var weekday = now.toLocaleDateString('en-US',{weekday:'long', timeZone: ET_ZONE}).toUpperCase();
+  var dateStr = now.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric', timeZone: ET_ZONE});
+  var timeStr = now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit', timeZone: ET_ZONE});
+  document.getElementById('dateblock').innerHTML = '<b>' + weekday + '</b> ' + dateStr + ' · ' + timeStr + ' ET';
 }
 updateDate();
 setInterval(updateDate, 60000);
@@ -414,6 +524,29 @@ function stripHtml(str) {
   var tmp = document.createElement('div');
   tmp.innerHTML = str;
   return (tmp.textContent || tmp.innerText || '').trim();
+}
+
+var HIGH_IMPACT_KEYWORDS = [
+  'cpi','consumer price index','ppi','producer price index','nonfarm payroll','non-farm payroll','nfp',
+  'fomc','fed rate','federal reserve rate','interest rate decision','rate hike','rate cut','powell',
+  'core pce','pce inflation','gdp','recession','inflation report','jobs report','unemployment rate',
+  'debt ceiling','treasury yield','fed chair','central bank','rate decision'
+];
+var MEDIUM_IMPACT_KEYWORDS = [
+  'retail sales','jobless claims','unemployment claims','ism pmi','pmi','manufacturing index',
+  'consumer confidence','housing starts','durable goods','trade balance','earnings','guidance',
+  'downgrade','upgrade','forecast','merger','acquisition','ipo','bond yield','tariff','sanctions'
+];
+
+function classifyImpact(title, summary) {
+  var text = ((title||'') + ' ' + (summary||'')).toLowerCase();
+  for (var i=0; i<HIGH_IMPACT_KEYWORDS.length; i++) {
+    if (text.indexOf(HIGH_IMPACT_KEYWORDS[i]) !== -1) return 'high';
+  }
+  for (var j=0; j<MEDIUM_IMPACT_KEYWORDS.length; j++) {
+    if (text.indexOf(MEDIUM_IMPACT_KEYWORDS[j]) !== -1) return 'medium';
+  }
+  return null;
 }
 
 function timeAgo(date) {
@@ -488,7 +621,9 @@ function renderArticles() {
   }
   var html = '';
   filtered.slice(0,60).forEach(function(a,i) {
-    html += '<a class="article" href="' + a.link + '" target="_blank" rel="noopener noreferrer"><span class="article-num">' + String(i+1).padStart(2,'0') + '</span><div><span class="article-source ' + a.sourceCls + '">' + a.sourceName + '</span><div class="article-headline">' + a.title + '</div>' + (a.summary ? '<div class="article-summary">' + a.summary + (a.summary.length>=180?'…':'') + '</div>' : '') + '<div class="article-meta">' + timeAgo(a.pubDate) + '</div></div></a>';
+    var impact = classifyImpact(a.title, a.summary);
+    var dot = impact ? '<span class="news-impact-dot news-impact-' + impact + '" title="' + (impact==='high'?'High impact — likely to move markets':'Medium impact — worth watching') + '"></span>' : '';
+    html += '<a class="article" href="' + a.link + '" target="_blank" rel="noopener noreferrer"><span class="article-num">' + String(i+1).padStart(2,'0') + '</span><div><span class="article-source ' + a.sourceCls + '">' + dot + a.sourceName + '</span><div class="article-headline">' + a.title + '</div>' + (a.summary ? '<div class="article-summary">' + a.summary + (a.summary.length>=180?'…':'') + '</div>' : '') + '<div class="article-meta">' + timeAgo(a.pubDate) + '</div></div></a>';
   });
   document.getElementById('feedContainer').innerHTML = html;
 }
@@ -508,7 +643,7 @@ async function loadAllFeeds(manualRefresh) {
       status.textContent = 'No articles retrieved — try refreshing';
       document.getElementById('feedContainer').innerHTML = '<div class="error-state">Worker returned no articles. Try refreshing.</div>';
     } else {
-      status.textContent = allArticles.length + ' headlines · ' + liveCount + '/' + SOURCES.length + ' sources live · Updated ' + new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+      status.textContent = allArticles.length + ' headlines · ' + liveCount + '/' + SOURCES.length + ' sources live · Updated ' + new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit', timeZone: ET_ZONE}) + ' ET';
     }
   } catch(e) {
     status.textContent = 'Worker unreachable — try refreshing';
