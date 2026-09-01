@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
-<title>AEC WIRE — Live Market &amp; News Terminal | Ascenda Enterprise Capital</title>
+<title>AEC Wire | Market Intelligence & AECQS Research Terminal</title>
 <meta name="description" content="Live aggregated news from Bloomberg, WSJ, CNBC, Reuters, MarketWatch, Financial Times, Yahoo Finance, Investing.com, AP, and Finviz — curated by Ascenda Enterprise Capital."/>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,5 70,30 50,55 30,30' fill='%23E8E8E8'/%3E%3Cpolygon points='50,5 80,35 70,30' fill='%23F5F5F5'/%3E%3Cpolygon points='50,55 70,30 80,35' fill='%23C0C0D0'/%3E%3Cpolygon points='50,55 30,30 20,35' fill='%23A0A0B0'/%3E%3Cpolygon points='50,55 80,35 50,80' fill='%23909090'/%3E%3Cpolygon points='50,80 20,35 50,55' fill='%23707070'/%3E%3C/svg%3E"/>
 <style>
@@ -149,6 +149,21 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
   .cal-row{grid-template-columns:60px 40px 1fr;gap:.5rem}
   .cal-values{display:none}
 }
+
+/* AECQS V2 — research intelligence layer */
+.aecqs-intel{padding:2.5rem 1.75rem;border-bottom:.5px solid var(--rule);background:linear-gradient(180deg,rgba(255,255,255,.025),transparent)}
+.aecqs-intel-head{display:flex;justify-content:space-between;gap:1.5rem;align-items:flex-end;flex-wrap:wrap;margin-bottom:1.4rem}
+.aecqs-intel-title{font-family:var(--font-display);font-size:1.75rem;font-weight:300}.aecqs-intel-title em{font-style:italic;color:var(--cream2)}
+.aecqs-intel-sub{max-width:650px;color:var(--cream3);font-size:.8rem;line-height:1.7}
+.aecqs-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--rule);border:.5px solid var(--rule)}
+.aecqs-kpi{background:var(--ink2);padding:1.15rem}.aecqs-kpi-label{font-family:var(--font-mono);font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cream3)}
+.aecqs-kpi-value{font-family:var(--font-display);font-size:1.45rem;margin-top:.3rem;color:var(--white)}.aecqs-kpi-value.good{color:var(--green)}
+.aecqs-arch{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:1px;background:var(--rule);margin-top:1px}
+.aecqs-arch div{background:var(--ink2);padding:.9rem .7rem;font-family:var(--font-mono);font-size:.48rem;letter-spacing:.06em;text-transform:uppercase;color:var(--cream2);line-height:1.45}
+.aecqs-disclosure{font-family:var(--font-mono);font-size:.48rem;color:var(--cream3);line-height:1.65;border:.5px solid var(--rule);padding:.85rem 1rem;margin-top:1px}
+.aecqs-actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}.aecqs-actions a{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;border:.5px solid var(--rule);padding:.65rem .85rem;color:var(--cream2)}
+@media(max-width:900px){.aecqs-kpis{grid-template-columns:repeat(2,1fr)}.aecqs-arch{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.aecqs-kpis,.aecqs-arch{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -157,6 +172,7 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
   <div class="masthead-top">
     <span><span class="live-dot"></span>LIVE FEED — AUTO-REFRESH EVERY 5 MIN</span>
     <span style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
+      <a href="#aecqs-intelligence">AECQS</a>
       <a href="#" onclick="document.getElementById('research-modal').style.display='flex';return false;">RESEARCH NOTES</a>
       <a href="#" onclick="document.getElementById('portal-modal').style.display='flex';return false;">INVESTOR PORTAL</a>
       <a href="https://ascendaenterprisecapital.com" target="_blank" rel="noopener">ASCENDAENTERPRISECAPITAL.COM</a>
@@ -167,7 +183,7 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
       <svg class="diamond" viewBox="0 0 100 100"><polygon points="50,5 70,30 50,55 30,30" fill="#E8E8E8"/><polygon points="50,5 80,35 70,30" fill="#F5F5F5"/><polygon points="50,55 70,30 80,35" fill="#C0C0D0"/><polygon points="50,55 30,30 20,35" fill="#A0A0B0"/><polygon points="50,55 80,35 50,80" fill="#909090"/><polygon points="50,80 20,35 50,55" fill="#707070"/></svg>
       <div>
         <div class="masthead-logo">AEC <b>WIRE</b></div>
-        <div class="masthead-sub">Fifteen sources · One terminal · Ascenda Enterprise Capital</div>
+        <div class="masthead-sub">Market intelligence · AECQS research intelligence · Ascenda Enterprise Capital</div>
       </div>
     </div>
     <div class="masthead-date" id="dateblock"></div>
@@ -190,11 +206,26 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
   <div class="layout">
     <main class="feed-col">
 
+      
+      <!-- AECQS RESEARCH INTELLIGENCE -->
+      <section class="aecqs-intel" id="aecqs-intelligence">
+        <div class="aecqs-intel-head"><div><div class="research-label">AECQS Research Intelligence</div><div class="aecqs-intel-title">System <em>checkpoint</em></div></div><div class="aecqs-intel-sub">A research-intelligence surface for the current AEC Quantitative System development state. Figures below are historical simulation outputs, not audited live investment performance.</div></div>
+        <div class="aecqs-kpis">
+          <div class="aecqs-kpi"><div class="aecqs-kpi-label">Net Backtest P&amp;L</div><div class="aecqs-kpi-value good">+$6.039M</div></div>
+          <div class="aecqs-kpi"><div class="aecqs-kpi-label">Accepted Trades</div><div class="aecqs-kpi-value">25,507</div></div>
+          <div class="aecqs-kpi"><div class="aecqs-kpi-label">Win Rate</div><div class="aecqs-kpi-value">45.42%</div></div>
+          <div class="aecqs-kpi"><div class="aecqs-kpi-label">Profit Factor</div><div class="aecqs-kpi-value">1.131</div></div>
+        </div>
+        <div class="aecqs-arch"><div>01 · Research Engine</div><div>02 · Strategy Engine</div><div>03 · Regime Intelligence</div><div>04 · Signal &amp; Confluence</div><div>05 · Portfolio &amp; Risk</div><div>06 · Execution Engine</div><div>07 · Validation &amp; Monitoring</div></div>
+        <div class="aecqs-disclosure">AECQS-30 · Primary development market: NQ futures · Active R&amp;D · Historical backtest/simulated research only. Figures may change as implementation, portfolio construction and validation evolve.</div>
+        <div class="aecqs-actions"><a href="https://ascendaenterprisecapital.com/aec-quant-system.html" target="_blank" rel="noopener">AECQS Core ↗</a><a href="https://ascendaenterprisecapital.com/aec-research.html" target="_blank" rel="noopener">Research Lab ↗</a><a href="https://ascendaenterprisecapital.com/aec-performance.html" target="_blank" rel="noopener">Evidence ↗</a></div>
+      </section>
+
       <!-- RESEARCH NOTES -->
       <div class="research-section">
         <div class="research-label">AEC Market Intelligence</div>
         <div class="research-title">Research <em>Notes</em></div>
-        <div class="research-sub">Weekly market analysis, macro commentary, and trade insights from Izaiah Cottle and the AEC trading desk.</div>
+        <div class="research-sub">Selected market commentary and research notes published by Ascenda Enterprise Capital. Dated notes are historical commentary and should not be read as current trading recommendations.</div>
         <div class="research-grid">
           <div class="research-card" onclick="document.getElementById('research-modal').style.display='flex'">
             <div class="research-meta">Jun 14, 2026 · Futures</div>
@@ -299,7 +330,7 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
 
       <div class="aec-cta">
         <div class="aec-cta-title">Ascenda Enterprise Capital</div>
-        <div class="aec-cta-sub">Multi-strategy investment firm. Currently accepting accredited investors.</div>
+        <div class="aec-cta-sub">Quantitative research, market intelligence, real estate, private equity and long-horizon opportunity development.</div>
         <button class="aec-cta-btn" onclick="document.getElementById('portal-modal').style.display='flex'">Investor Portal →</button>
         <div style="margin-top:.6rem"><a href="https://ascendaenterprisecapital.com" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream3);text-decoration:underline">View Full Firm Site →</a></div>
       </div>
@@ -314,7 +345,7 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
 </div>
 
 <footer>
-  AEC WIRE — A RESEARCH TOOL BY ASCENDA ENTERPRISE CAPITAL LLC · ALL HEADLINES © THEIR RESPECTIVE PUBLISHERS · SOURCED VIA PUBLIC RSS
+  AEC WIRE — MARKET INTELLIGENCE & AECQS RESEARCH TERMINAL BY ASCENDA ENTERPRISE CAPITAL LLC · ALL HEADLINES © THEIR RESPECTIVE PUBLISHERS · SOURCED VIA PUBLIC RSS
   <div class="foot-links">
     <a href="https://ascendaenterprisecapital.com" target="_blank" rel="noopener">Ascenda Enterprise Capital</a>
     <a href="https://ascendaenterprisecapital.com#contact" target="_blank" rel="noopener">Contact</a>
@@ -361,10 +392,10 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
       <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem"><strong style="color:rgba(255,255,255,.7)">What actually happened in Lebanon:</strong> On June 29-30, Israeli forces detonated a Hezbollah tunnel network near Majdal Zoun as part of enforcement activity under the existing Israel-Lebanon ceasefire framework — not a new bombing campaign. Markets treated it accordingly: it barely moved gold or oil on its own. The more consequential story remains the Iran conflict that began in late February, which sent oil into a historic supply shock and pushed gold to fresh highs before easing in recent weeks as US-Iran talks in Qatar showed signs of progress.</p>
       <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem"><strong style="color:rgba(255,255,255,.7)">Gold:</strong> Trading near $4,065–$4,090/oz, up over 22% year-over-year, but down roughly 8% over the past month as talk of progress in negotiations cooled the safe-haven bid. Constructive medium-term given central bank accumulation, but vulnerable to sharp pullbacks on any real de-escalation headline.</p>
       <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem"><strong style="color:rgba(255,255,255,.7)">Crude Oil (WTI):</strong> Pulled back to the high-$60s as shipping disruption eases. A break in the Qatar talks could snap the prior supply-shock premium right back.</p>
-      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9"><strong style="color:rgba(255,255,255,.7)">AEC positioning:</strong> Smaller size, watched over traded aggressively. The tape feels calm on the surface while headline risk sits underneath it — exactly the setup that produces violent, low-warning moves. Separately, AEC's proprietary Quantum Trading System remains in active development, targeting broader availability within the next year.</p>
+      <p style="font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.9"><strong style="color:rgba(255,255,255,.7)">AEC positioning:</strong> Smaller size, watched over traded aggressively. The tape feels calm on the surface while headline risk sits underneath it — exactly the setup that produces violent, low-warning moves. Separately, AECQS remains under active research and development as Ascenda Enterprise Capital's proprietary quantitative research architecture.</p>
     </div>
     <div style="text-align:center;padding:1.5rem 0;border-top:.5px solid var(--rule)">
-      <p style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2)">New research notes published weekly</p>
+      <p style="font-family:var(--font-mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2)">Research notes published as available</p>
     </div>
   </div>
 </div>
