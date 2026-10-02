@@ -9,8 +9,8 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,5 70,30 50,55 30,30' fill='%23E8E8E8'/%3E%3Cpolygon points='50,5 80,35 70,30' fill='%23F5F5F5'/%3E%3Cpolygon points='50,55 70,30 80,35' fill='%23C0C0D0'/%3E%3Cpolygon points='50,55 30,30 20,35' fill='%23A0A0B0'/%3E%3Cpolygon points='50,55 80,35 50,80' fill='%23909090'/%3E%3Cpolygon points='50,80 20,35 50,55' fill='%23707070'/%3E%3C/svg%3E"/>
 <style>
 :root{
-  --ink:#06050D;
-  --ink2:#0D0C16;
+  --ink:#060606;
+  --ink2:#101010;
   --rule:rgba(255,255,255,0.1);
   --rule-light:rgba(255,255,255,0.06);
   --white:#FFFFFF;
@@ -26,13 +26,13 @@
 html,body{background:var(--ink);color:var(--white);font-family:var(--font-body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 *:focus-visible{outline:2px solid #FFFFFF;outline-offset:3px}
-.skip-link{position:fixed;left:1rem;top:-5rem;z-index:10001;background:#fff;color:#06050D;padding:.75rem 1rem;font-family:var(--font-mono);font-size:.65rem}.skip-link:focus{top:1rem}
-#wire-gate{position:fixed;inset:0;z-index:10000;background:rgba(6,5,13,.99);display:flex;align-items:flex-start;justify-content:center;padding:1.25rem;overflow-y:auto}
-.wire-gate-box{width:min(680px,100%);margin:auto;border:.5px solid rgba(255,255,255,.25);background:#0D0C16;padding:clamp(1.5rem,5vw,3rem)}
+.skip-link{position:fixed;left:1rem;top:-5rem;z-index:10001;background:#fff;color:#060606;padding:.75rem 1rem;font-family:var(--font-mono);font-size:.65rem}.skip-link:focus{top:1rem}
+#wire-gate{position:fixed;inset:0;z-index:10000;background:rgba(8,8,8,.99);display:flex;align-items:flex-start;justify-content:center;padding:1.25rem;overflow-y:auto}
+.wire-gate-box{width:min(680px,100%);margin:auto;border:.5px solid rgba(255,255,255,.25);background:#101010;padding:clamp(1.5rem,5vw,3rem)}
 .wire-gate-box h1{font-family:var(--font-display);font-size:2rem;font-weight:300;margin-bottom:1rem}.wire-gate-box p{font-size:.85rem;color:var(--cream2);line-height:1.8;margin-bottom:1rem}
 .wire-gate-warning{border-left:2px solid #fff;background:rgba(255,255,255,.04);padding:1rem!important;color:#fff!important}
 .wire-check{display:flex;gap:.75rem;align-items:flex-start;padding:1rem;border:.5px solid var(--rule);margin:1rem 0}.wire-check label{font-size:.76rem;line-height:1.65;color:var(--cream2)}
-.wire-enter{width:100%;padding:1rem;border:0;background:#fff;color:#06050D;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.4}.wire-enter.enabled{opacity:1;cursor:pointer}
+.wire-enter{width:100%;padding:1rem;border:0;background:#fff;color:#060606;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;opacity:.4}.wire-enter.enabled{opacity:1;cursor:pointer}
 .wire-legal{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.2rem;font-family:var(--font-mono);font-size:.5rem;text-transform:uppercase}.wire-legal a{text-decoration:underline}
 
 .masthead{background:var(--ink);border-bottom:.5px solid var(--rule);position:sticky;top:0;z-index:100}
@@ -217,10 +217,10 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
   </div>
 </header>
 
-<div style="padding:.65rem 1.5rem;background:#17141f;border-bottom:.5px solid var(--rule);font-family:var(--font-mono);font-size:.5rem;letter-spacing:.07em;text-transform:uppercase;color:var(--cream2);text-align:center;line-height:1.7"><strong style="color:#fff">General information only.</strong> No offer, solicitation, personalized advice, or current trade instruction. Third-party headlines and research may be delayed, incomplete, or inaccurate.</div>
+<div style="padding:.65rem 1.5rem;background:#191919;border-bottom:.5px solid var(--rule);font-family:var(--font-mono);font-size:.5rem;letter-spacing:.07em;text-transform:uppercase;color:var(--cream2);text-align:center;line-height:1.7"><strong style="color:#fff">General information only.</strong> No offer, solicitation, personalized advice, or current trade instruction. Third-party headlines and research may be delayed, incomplete, or inaccurate.</div>
 
 <!-- TRADINGVIEW TICKER -->
-<div style="background:#0D0C16;border-bottom:.5px solid var(--rule)">
+<div style="background:#101010;border-bottom:.5px solid var(--rule)">
   <div class="tradingview-widget-container">
     <div class="tradingview-widget-container__widget"></div>
     <script type="application/json" data-consent-src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js">
@@ -389,7 +389,7 @@ footer .foot-links{margin-top:.75rem;display:flex;gap:1.5rem;justify-content:cen
 <!-- RESEARCH MODAL -->
 <div id="research-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Archived research notes" onclick="if(event.target===this)this.style.display='none'" style="overflow-y:auto">
   <div style="max-width:800px;margin:auto;position:relative;width:100%">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;position:sticky;top:0;background:rgba(10,9,13,0.97);padding:1rem 0;border-bottom:.5px solid var(--rule)">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;position:sticky;top:0;background:rgba(11,11,11,0.97);padding:1rem 0;border-bottom:.5px solid var(--rule)">
       <div>
         <div style="font-family:var(--font-mono);font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:#888;margin-bottom:.3rem">AEC Market Intelligence</div>
         <div style="font-family:var(--font-display);font-size:1.4rem;color:#fff;font-weight:300">Research Notes</div>
