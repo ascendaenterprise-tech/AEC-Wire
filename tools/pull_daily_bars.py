@@ -20,13 +20,13 @@ for s in SYMS:
                 c = q['close'][i]
                 if c is None: continue
                 day = dt.datetime.fromtimestamp(t + tz, dt.timezone.utc).strftime('%Y-%m-%d')
-                rows.append((nm, day, q['open'][i], q['high'][i], q['low'][i], c, q['volume'][i] or 0))
+                rows.append((nm, day, q['open'][i], q['high'][i], q['low'][i], c, q['volume'][i] or 0, t, tz))
             ok = True; break
         except Exception as e:
             time.sleep(1 + a)
     if not ok: bad.append(s)
     time.sleep(0.2)
 with open('merged_yahoo.csv', 'w', newline='') as f:
-    w = csv.writer(f); w.writerow(['sym', 'date', 'o', 'h', 'l', 'c', 'v']); w.writerows(rows)
+    w = csv.writer(f); w.writerow(['sym', 'date', 'o', 'h', 'l', 'c', 'v', 'ts', 'gmtoffset']); w.writerows(rows)
 print(len(rows), 'rows;', len(SYMS) - len(bad), 'of', len(SYMS), 'symbols ok; failed:', bad)
 sys.exit(0 if len(bad) < len(SYMS) / 3 else 1)
