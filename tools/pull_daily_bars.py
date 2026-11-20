@@ -19,7 +19,7 @@ for s in SYMS:
             for i, t in enumerate(ts):
                 c = q['close'][i]
                 if c is None: continue
-                day = dt.datetime.fromtimestamp(t + tz, dt.timezone.utc).strftime('%Y-%m-%d')
+                day = dt.datetime.fromtimestamp(t, dt.timezone.utc).strftime('%Y-%m-%d')  # UTC date: matches the history already in the forward-test file
                 rows.append((nm, day, q['open'][i], q['high'][i], q['low'][i], c, q['volume'][i] or 0, t, tz))
             ok = True; break
         except Exception as e:
