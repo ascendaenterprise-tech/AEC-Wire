@@ -1,0 +1,23 @@
+name: Forward-test daily bars
+# Pulls Yahoo daily bars for the AECQS forward test and publishes merged_yahoo.csv to the fwd-data branch.
+on:
+  schedule:
+    - cron: '45 21,23 * * 1-5'
+  workflow_dispatch: {}
+permissions:
+  contents: write
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/pull_daily_bars.py
+      - name: Publish to fwd-data branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config --global user.name "aec-yahoo-bot"
+          git config --global user.email "actions@users.noreply.github.com"
+          mkdir /tmp/pub && cp merged_yahoo.csv /tmp/pub/
+          cd /tmp/pub && git init -q && git checkout -q -b fwd-data && git add -A && git commit -qm "daily bars $(date -u +%FT%TZ)"
+          git push -q -f "https://x-access-token:$GH_TOKEN@github.com/$GITHUB_REPOSITORY.git" fwd-data
